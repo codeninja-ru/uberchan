@@ -7,28 +7,26 @@ CREATE TABLE boards (
 
 CREATE TABLE threads (
   id serial PRIMARY KEY,
-  board_id integer NOT NULL,
-  when timestamp with timezone NOT NULL DEFAULT NOW(),
-  bumped timestamp with timezone NOT NULL DEFAULT NOW(),
+  board_id integer NOT NULL REFERENCES boards(id) ON DELETE CASCADE,
+  date timestamp with time zone NOT NULL DEFAULT NOW(),
+  bumped timestamp with time zone NOT NULL DEFAULT NOW(),
   post_count integer NOT NULL DEFAULT 1,
-  hide_count integer NOT NULL DEFAULT 0,
-  FOREIGN KEY board_id REFERENCES boards(id) ON DELETE CASCADE
+  hide_count integer NOT NULL DEFAULT 0
 );
 
 CREATE TABLE posts (
   id serial PRIMARY KEY,
-  thread_id integer NOT NULL,
+  thread_id integer NOT NULL REFERENCES threads(id) ON DELETE CASCADE,
   name varchar(25),
   title varchar(50),
   message varchar(500) NOT NULL,
-  when timestamp with timezone NOT NULL DEFAULT NOW(),
+  date timestamp with time zone NOT NULL DEFAULT NOW(),
   ip inet NOT NULL,
   hash varchar(32),
   num integer NOT NULL DEFAULT 1,
-  is_deleted boolean NOT NULL DEFAULT false
-  pwd varchar(32)
-  rate smallint NOT NULL DEFAULT 0,
-  FOREIGN KEY thread_id REFERENCES threads(id) ON DELETE CASCADE
+  is_deleted boolean NOT NULL DEFAULT false,
+  pwd varchar(32),
+  rate smallint NOT NULL DEFAULT 0
 );
 
 CREATE TABLE bans (
@@ -36,5 +34,5 @@ CREATE TABLE bans (
   ip inet NOT NULL,
   hash varchar(32),
   reason varchar(50),
-  expire timestamp with timezone
+  expire timestamp with time zone
 );
