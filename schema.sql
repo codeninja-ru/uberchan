@@ -29,6 +29,10 @@ CREATE TABLE posts (
   rate smallint NOT NULL DEFAULT 0
 );
 
+CREATE INDEX threads_date_idx ON threads USING BTREE(bumped);
+CREATE INDEX posts_date_idx ON posts USING BTREE(date);
+CREATE INDEX boards_code_idx ON boards USING BTREE(code);
+
 CREATE TABLE bans (
   id serial PRIMARY KEY,
   ip inet NOT NULL,
