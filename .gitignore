@@ -1,4 +1,12 @@
 *.class
+*.launch
+*.iml
+*.swp
+.classpath
+.idea
+.project
+.settings
+target
 
 # Package Files #
 *.jar
