@@ -9,6 +9,7 @@ import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.Place;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
+import org.uberchan.client.place.NameTokens;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,8 +21,8 @@ import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
 public class BoardPresenter extends Presenter<BoardPresenter.MyView, BoardPresenter.MyProxy> {
 
     @Inject
-    public BoardPresenter(boolean autoBind, EventBus eventBus, MyView view, MyProxy proxy) {
-        super(autoBind, eventBus, view, proxy);
+    public BoardPresenter(EventBus eventBus, MyView view, MyProxy proxy) {
+        super(eventBus, view, proxy, RevealType.Root);
     }
 
     public interface MyView extends View {
@@ -29,7 +30,7 @@ public class BoardPresenter extends Presenter<BoardPresenter.MyView, BoardPresen
     }
 
     @ProxyStandard
-    @NameToken("board")
+    @NameToken(NameTokens.home)
     public interface MyProxy extends Proxy<BoardPresenter>, Place {
     }
 

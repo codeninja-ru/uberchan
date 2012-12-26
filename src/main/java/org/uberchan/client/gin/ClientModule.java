@@ -2,8 +2,8 @@ package org.uberchan.client.gin;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
-import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import org.uberchan.client.board.BoardModule;
+import org.uberchan.client.place.PlaceManager;
 
 /**
  * Created with IntelliJ IDEA.

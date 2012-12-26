@@ -5,15 +5,9 @@
 
 <web-app>
 
-    <context-param>
-        <param-name>contextConfiguration</param-name>
-        <param-value>
-            classpath:context.xml
-        </param-value>
-    </context-param>
     <listener>
         <listener-class>
-            org.springframework.web.context.request.RequestContextListener
+            org.springframework.web.context.ContextLoaderListener
         </listener-class>
     </listener>
 

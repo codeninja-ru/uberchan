@@ -1,4 +1,4 @@
-package org.uberchan.client;
+package org.uberchan.client.place;
 
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -13,14 +13,14 @@ import com.gwtplatform.mvp.client.proxy.TokenFormatter;
  * Time: 20:38
  * To change this template use File | Settings | File Templates.
  */
-public class MyPlaceManager extends PlaceManagerImpl {
+public class PlaceManager extends PlaceManagerImpl {
 
     @Inject
-    public MyPlaceManager(EventBus eventBus, TokenFormatter tokenFormatter) {
+    public PlaceManager(EventBus eventBus, TokenFormatter tokenFormatter) {
         super(eventBus, tokenFormatter);
     }
 
     public void revealDefaultPlace() {
-        revealPlace(new PlaceRequest("board"), false);
+        revealPlace(new PlaceRequest(NameTokens.home));
     }
 }
